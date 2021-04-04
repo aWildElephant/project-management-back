@@ -17,6 +17,12 @@ app.post('/task', async (req, res) => {
     res.send(task)
 })
 
+app.get("/task/list", async (req, res) => {
+    const tasks = await Task.findAll()
+
+    res.send(tasks)
+})
+
 app.get("/task/:id", async (req, res) => {
     const task = await Task.findByPk(req.params.id)
 
