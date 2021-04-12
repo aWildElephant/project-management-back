@@ -29,6 +29,12 @@ app.get("/task/:id", async (req, res) => {
     res.send(task)
 })
 
+app.delete("/task/:id", async (req, res) => {
+    await Task.destroy({ where: { id: req.params.id } })
+
+    res.sendStatus(200)
+})
+
 sequelize.authenticate()
     .then(() => sequelize.sync())
     .then(() => {
