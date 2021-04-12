@@ -14,6 +14,11 @@ export const Task = sequelize.define("task", {
     },
     description: {
         type: DataTypes.TEXT
+    },
+    status: {
+        type: DataTypes.ENUM('OPEN','IN_PROGRESS','DONE'),
+        defaultValue: 'OPEN',
+        allowNull: false
     }
 }, {
     createdAt: "creationTimestamp",

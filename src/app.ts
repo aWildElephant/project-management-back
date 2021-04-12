@@ -29,6 +29,14 @@ app.get("/task/:id", async (req, res) => {
     res.send(task)
 })
 
+app.put('/task/:id/status', async (req, res) => {
+    const newStatus = req.body.status;
+
+    await Task.update({ status: newStatus }, { where: { id: req.params.id } })
+
+    res.sendStatus(200)
+})
+
 app.delete("/task/:id", async (req, res) => {
     await Task.destroy({ where: { id: req.params.id } })
 
